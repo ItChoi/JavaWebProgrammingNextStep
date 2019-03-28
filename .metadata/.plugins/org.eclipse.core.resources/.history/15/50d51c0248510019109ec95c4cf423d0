@@ -1,0 +1,30 @@
+package java.next.step;
+
+import org.junit.Test;
+
+public class CalculatorTest {
+
+	@Test
+	public void add() {
+		
+	}
+	
+}
+
+class Calculator {
+	int add(int i, int j) {
+		return i + j;
+	}
+	
+	int add(int i, int j) {
+		return i + j;
+	}
+	
+	int add(int i, int j) {
+		return i + j;
+	}
+	
+	int add(int i, int j) {
+		return i + j;
+	}
+}

@@ -1,0 +1,10 @@
+# 02장
+
+### 2-1 main() 메소드를 활용한 테스트의 문제점
+	- 메인 메소드와 테스트 코드를 분리하기 위해 JUnit 등 테스트 라이브러리를 활용하자.
+	
+### 2-2 JUnit을 활용해 main() 메소드 문제점 극복
+	- [이클립스 활용, JUnit 3 버전 사용법](https://youtu.be/vrUGCv80xql)
+	- [JUnit 4 버전 사용방법](https://youtu.be/tyZMdwT3rlY)
+	
+	

@@ -1,0 +1,16 @@
+package java.next.step;
+
+import org.junit.Test;
+
+public class CalculatorTest {
+
+	@Test
+	public void add() {
+		
+	}
+	
+}
+
+class Calculator {
+	
+}

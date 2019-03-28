@@ -1,0 +1,17 @@
+package test.next.step;
+
+import org.junit.Test;
+
+public class CalculatorTest {
+	
+	@Test
+	
+	
+	
+}
+
+class Calculator {
+	
+	
+}
+
