@@ -1,0 +1,21 @@
+package test.next.step;
+
+public class StringCalculator {
+	public int returnNumber(String number) {
+		String separate = "";
+		if (number.startsWith("//") && number.indexOf("\n") != -1) {
+			separate = number.substring(number.lastIndexOf("/") + 1, number.indexOf("\n"));
+		}
+		
+		String[] split = number.split(",|:|" + separate);
+		for (String a : split) {
+			if (a.startsWith("-")) {
+				
+			}
+			
+			System.out.println(a);
+		}
+		
+		return 0;
+	}
+}

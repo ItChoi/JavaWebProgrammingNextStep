@@ -1,0 +1,29 @@
+package test.next.step;
+
+import test.next.step.exception.NegativeNumberException;
+
+public class StringCalculator {
+	public int returnNumber(String number) {
+		String separate = "";
+		if (number.startsWith("//") && number.indexOf("\n") != -1) {
+			separate = number.substring(number.lastIndexOf("/") + 1, number.indexOf("\n"));
+			number.replaceAll("\n", "");
+		}
+		
+		int sum = 0;
+		String[] split = number.split(",|:|" + separate);
+		
+		
+		for (String a : split) {
+			if (a.indexOf("-") != -1) {
+				throw new NegativeNumberException("음수가 들어갈 수 없다.");
+			}
+			
+			// sum += Integer.parseInt(a);
+			
+			System.out.println(a);
+		}
+		
+		return 0;
+	}
+}

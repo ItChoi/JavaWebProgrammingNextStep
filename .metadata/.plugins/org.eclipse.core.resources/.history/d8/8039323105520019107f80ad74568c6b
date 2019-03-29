@@ -1,0 +1,24 @@
+package test.next.step;
+
+import test.next.step.exception.NegativeNumberException;
+
+public class StringCalculator {
+	public int returnNumber(String number) {
+		String test = "";
+		if (number.startsWith("//") && number.indexOf("\n") != -1) {
+			test = number.substring(number.lastIndexOf("/") + 1, number.indexOf("\n"));
+		}
+		
+		String[] split = number.split(",|:|" + test);
+		for (String a : split) {
+			try {
+				int b = Integer.parseInt(a);
+			} catch (NegativeNumberException e) {
+				e.getMessage()
+			}
+			System.out.println(a);
+		}
+		
+		return 0;
+	}
+}

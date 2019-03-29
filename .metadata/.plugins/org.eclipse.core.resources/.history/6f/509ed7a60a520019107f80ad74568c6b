@@ -1,0 +1,26 @@
+package test.next.step;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class StringCalculatorTest {
+	
+	private StringCalculator cal;
+	
+	@Before
+	public void setup() {
+		cal = new StringCalculator();
+	}
+	
+	@Test
+	public void test1() {
+		assertEquals(6, cal.returnNumber("1,2"));
+		// cal.returnNumber("//;\n1;2");
+	}
+	
+	
+}
+
+

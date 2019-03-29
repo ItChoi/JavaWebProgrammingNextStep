@@ -1,0 +1,9 @@
+package test.next.step.exception;
+
+public class NegativeNumberException extends RuntimeException {
+	
+	public NegativeNumberException(Exception e) {
+		System.out.println("-----------NegativeNumberException--------------");
+		e.getMessage();
+	}
+}
