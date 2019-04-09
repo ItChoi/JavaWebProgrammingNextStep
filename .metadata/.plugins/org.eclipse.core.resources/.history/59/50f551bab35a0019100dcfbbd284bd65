@@ -1,0 +1,43 @@
+package test.next.step.chapter03.ex01board;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RequestMapping("/chapter03/board")
+@Controller
+public class BoardController {
+
+	@GetMapping("/list")
+	public void boardList() {
+		System.out.println("∞Ÿ∏ÆΩ∫∆Æ");
+	}
+	
+	@GetMapping("/posts")
+	public String boardPosts() {
+		System.out.println("ø‘ùo");
+		return "/chapter03/board/posts";
+	}
+	@GetMapping("/register")
+	public String boardRegister() {
+		return "/chapter03/board/form";
+	}
+	@GetMapping("/login")
+	public String boardLogin() {
+		
+		return "/chapter03/board/login";
+	}
+	@GetMapping("/logout")
+	public void boardLogout() {
+		
+	}
+	@GetMapping("/info")
+	public String boardInfo() {
+		return "/chapter03/board/form";
+	}
+	
+	
+	
+	
+}

@@ -1,0 +1,5 @@
+package test.next.step;
+
+public class JdbcTests {
+
+}

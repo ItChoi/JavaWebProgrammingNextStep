@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;JavaWebProgrammingNextStep/src/main/webapp/WEB-INF/views/chapter03/board&apos; to &apos;form&apos;" description="Rename resource &apos;board&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/WEB-INF/views/chapter03/board" name="form" stamp="1554806210713" updateReferences="true"/>
+</session>

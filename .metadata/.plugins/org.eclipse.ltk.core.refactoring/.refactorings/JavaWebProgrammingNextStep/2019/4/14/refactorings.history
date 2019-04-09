@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;test.next.step.chapter03.test&apos; to &apos;test.next.step.chapter03&apos;&#x0D;&#x0A;- Original project: &apos;JavaWebProgrammingNextStep&apos;&#x0D;&#x0A;- Original element: &apos;JavaWebProgrammingNextStep/src/main/java/test.next.step.chapter03.test&apos;&#x0D;&#x0A;- Renamed element: &apos;JavaWebProgrammingNextStep/src/main/java/test.next.step.chapter03&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;test.next.step.chapter03.test&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java&lt;test.next.step.chapter03.test" name="test.next.step.chapter03" qualified="false" references="true" stamp="1554203793260" textual="false" version="1.0"/>
+</session>

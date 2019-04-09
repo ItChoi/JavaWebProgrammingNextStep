@@ -1,5 +1,0 @@
-package test.next.step.exception;
-
-public class NegativeNumberException {
-
-}

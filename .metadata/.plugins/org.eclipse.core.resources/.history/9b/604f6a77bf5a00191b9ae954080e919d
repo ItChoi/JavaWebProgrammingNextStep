@@ -1,0 +1,32 @@
+package test.next.step;
+
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
+public class JdbcTests {
+
+	static {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testConnection() {
+		try (Connection con = DriverManager.getConnection(
+				"jdbc:oracle:thin:@localhost:1521:XE",
+				"nextstep",
+				"nextstep")) {
+			
+			System.out.println(con);
+			System.out.println("con: " + con);
+			
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
+	}
+	
+}

@@ -1,0 +1,10 @@
+package test.next.step;
+
+public class JdbcTests {
+
+	static {
+		Class.forName("oracle.jdbc.dirver.OracleDriver");
+		
+	}
+	
+}

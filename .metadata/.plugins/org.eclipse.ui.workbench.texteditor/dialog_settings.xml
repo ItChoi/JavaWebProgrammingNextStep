@@ -2,14 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="junit" key="selection"/>
+		<item value="OracleDri" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="junit-test"/>
-			<item value="junit"/>
+			<item value="oracleDri"/>
+			<item value="oracleDi"/>
+			<item value="Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;);"/>
+			<item value="mybatis"/>
+			<item value="json"/>
+			<item value="title2"/>
+			<item value=".4.1 요구사항을 작은 단위로 나누기"/>
+			<item value="public class CalculatorTest {"/>
 		</list>
 		<list key="replacehistory">
 		</list>

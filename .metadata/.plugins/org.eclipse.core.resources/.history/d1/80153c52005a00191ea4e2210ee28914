@@ -1,0 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<div class="login_form">
+	<form action="login" method="post">
+		사용자 아이디 </br>
+		<input type="text" name="userId" /> <br/>
+		
+		비밀번호
+		<input type="password" name="password" />
+		
+	</form>
+</div>

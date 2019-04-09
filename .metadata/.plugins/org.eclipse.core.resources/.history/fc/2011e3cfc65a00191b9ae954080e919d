@@ -1,0 +1,7 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+
+<form:form modelAttribute="member">
+	<form:input path="userId" />
+	
+</form:form>
