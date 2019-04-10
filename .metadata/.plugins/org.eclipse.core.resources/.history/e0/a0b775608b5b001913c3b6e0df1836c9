@@ -1,0 +1,5 @@
+# 흙흙흙흙
+	- Service -> ServiceImpl -> Mapper -> mapper.xml 구조
+		- 우선 root-context.xml에서 Controller를 제외한 Service 및 Mapper를 scan 하도록 설정한다.
+		
+	

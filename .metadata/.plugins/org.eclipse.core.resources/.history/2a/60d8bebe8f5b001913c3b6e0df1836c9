@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="test.next.step.chapter03.ex01board.mapper.MemberMapper">
+
+	<resultMap id="MemberResult" type="test.next.step.chapter03.ex01board.domain.Member">
+	
+	</resultMap>
+
+	<insert id="register">
+		INSERT INTO MEMBER (USER_ID, PASSWORD, EMAIL)
+		VALUES (#{userId}, #{password}, #{email})
+	</insert>
+	
+	<select id="loginTest" parameterType="test.next.step.chapter03.ex01board.domain.Member" resultMap="MemberResult">
+	
+	</select>
+
+</mapper>

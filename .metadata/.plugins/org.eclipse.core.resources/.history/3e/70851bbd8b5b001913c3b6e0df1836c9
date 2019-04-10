@@ -1,0 +1,8 @@
+# 흙흙흙흙
+	- Service -> ServiceImpl -> Mapper -> mapper.xml 구조
+		- 우선 root-context.xml에서 Controller를 제외한 Service 및 Mapper를 scan 하도록 설정한다.
+		그리고 servlet-context.xml에서 Controller를 Scan하도록 하는데, 이 때 주의할 점은 Controller, Sevrice,
+		ServiceImpl, Mapper를 한 패키지에 두니까 제대로 읽어들이지 못했다. 그리고 무슨 이유 때문인지는 모르겠지만 자꾸 Deployment
+		Assembly에서 추가한 ojdbc6.jar가 사라져서 
+		
+	

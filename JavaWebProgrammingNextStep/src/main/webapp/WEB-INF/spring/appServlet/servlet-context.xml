@@ -21,10 +21,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="test.next.step" />
+	<!-- <context:component-scan base-package="test.next.step" /> -->
 	
-	<context:component-scan base-package="test.next.step.chapter03.ex01board" use-default-filters="true">
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	<context:component-scan base-package="test.next.step.chapter03.ex01board.controller" use-default-filters="true">
 	</context:component-scan>	
 	
 </beans:beans>
