@@ -1,5 +1,7 @@
 package test.next.step.chapter03.ex01board.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -7,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import test.next.step.chapter03.ex01board.domain.Board;
 import test.next.step.chapter03.ex01board.domain.Member;
 import test.next.step.chapter03.ex01board.service.MemberService;
 
@@ -28,8 +32,12 @@ public class BoardController {
 	}
 	
 	@GetMapping("/posts")
-	public String boardPosts() {
-		System.out.println("get posts");
+	public String boardPosts(Model model) {
+		
+		List<Board> boardList = memberService.getBoardList();
+		
+		model.addAttribute("boardList", boardList);
+		
 		return "/chapter03/board/posts";
 	}
 	@GetMapping("/register")
@@ -51,7 +59,16 @@ public class BoardController {
 	
 	
 	@GetMapping("/login")
-	public String boardLogin() {
+	public String boardLogin(HttpServletRequest req, Model model, String babo) {
+		
+		System.out.println("babo::: " + babo);
+		
+		HttpSession session = req.getSession();
+		String userId = (String) session.getAttribute("userId");
+		
+		System.out.println("로그인 된 userId: " + userId);
+		
+		model.addAttribute("userId", userId);
 		
 		return "/chapter03/board/login";
 	}
@@ -62,26 +79,35 @@ public class BoardController {
 		boolean loginTest = false;
 		
 		// 로그인 검증
-		if (member != null) {
-			loginTest = memberService.loginTest(member);
-			
-			if (loginTest) {
-				HttpSession session = request.getSession();
-				session.setAttribute("userId", member.getUserId());
-				System.out.println("로그인 성공 세션 등록!");
-			}
-			
-		}
+		loginTest = memberService.loginTest(member);
 		
-		System.out.println("?????????????: " + loginTest);
+		if (loginTest) {
+			HttpSession session = request.getSession();
+			session.setAttribute("userId", member.getUserId());
+			System.out.println("로그인 성공 세션 등록!");
+		}
+			
+		System.out.println("loginTest: " + loginTest);
 		return new ResponseEntity<>(loginTest, HttpStatus.OK);
 	}
 	
 	
 	@GetMapping("/logout")
-	public void boardLogout() {
+	public String boardLogout(HttpServletRequest req, Model model) {
 		
+		HttpSession session = req.getSession();
+		String userId = (String) session.getAttribute("userId");
+		
+		if (userId != null) {
+			session.invalidate();
+		} else {
+			model.addAttribute("babo", "로그인 안하셨잖아요.");
+		}
+		
+		return "redirect:login"; 
 	}
+	
+	
 	@GetMapping("/info")
 	public String boardInfo() {
 		

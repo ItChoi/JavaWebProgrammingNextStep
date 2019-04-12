@@ -14,15 +14,12 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public void register(Member member) {
-		System.out.println("오긴오나?: " + member.getUserId());
 		memberMapper.register(member);
 	}
 
 	@Override
 	public boolean loginTest(Member member) {
-		System.out.println("여기오니???zzzzzz");
 		int loginCount = memberMapper.loginTest(member);
-		System.out.println("여기오니??? : " + loginCount);
 		return loginCount > 0 ? true : false;
 	}
 
