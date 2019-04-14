@@ -29,9 +29,7 @@
 	</bean>
 
 	<mybatis-spring:scan base-package="test.next.step.chapter03.ex01board.mapper" />	
-	<!-- <context:component-scan base-package="test.next.step.chapter03.ex01board" /> -->
+	<context:component-scan base-package="test.next.step.chapter03.ex01board.service" />
 	
-	<context:component-scan base-package="test.next.step.chapter03.ex01board.service" use-default-filters="true">
-	</context:component-scan>
 	
 </beans>

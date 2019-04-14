@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import test.next.step.chapter03.ex01board.domain.Board;
 import test.next.step.chapter03.ex01board.domain.Member;
+import test.next.step.chapter03.ex01board.service.BoardService;
 import test.next.step.chapter03.ex01board.service.MemberService;
 
 @RequestMapping("/chapter03/board")
@@ -26,6 +27,9 @@ public class BoardController {
 	@Autowired
 	MemberService memberService;
 	
+	@Autowired
+	BoardService boardService;
+	
 	@GetMapping("/list")
 	public void boardList() {
 		System.out.println("°Ù¸®½ºÆ®");
@@ -34,12 +38,13 @@ public class BoardController {
 	@GetMapping("/posts")
 	public String boardPosts(Model model) {
 		
-		List<Board> boardList = memberService.getBoardList();
+		List<Board> boardList = boardService.getBoardList();
 		
 		model.addAttribute("boardList", boardList);
 		
 		return "/chapter03/board/posts";
 	}
+	
 	@GetMapping("/register")
 	public String boardRegister(@ModelAttribute("member") Member member) {
 		System.out.println("get resgister");

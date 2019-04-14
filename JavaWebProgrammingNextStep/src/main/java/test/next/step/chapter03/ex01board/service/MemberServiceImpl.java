@@ -1,8 +1,11 @@
 package test.next.step.chapter03.ex01board.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import test.next.step.chapter03.ex01board.domain.Board;
 import test.next.step.chapter03.ex01board.domain.Member;
 import test.next.step.chapter03.ex01board.mapper.MemberMapper;
 

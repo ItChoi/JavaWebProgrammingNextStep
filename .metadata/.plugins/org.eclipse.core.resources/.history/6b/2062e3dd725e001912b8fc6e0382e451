@@ -1,0 +1,11 @@
+package test.next.step.chapter03.ex01board.mapper;
+
+import org.springframework.stereotype.Repository;
+
+import test.next.step.chapter03.ex01board.domain.Member;
+
+@Repository
+public interface MemberMapper {
+	void register(Member member);
+	int loginTest(Member member);
+}
