@@ -3,17 +3,17 @@ package test.next.step.chapter03.ex01board.domain;
 public class BoardReply {
 	private long replyId;
 	private long boardId;
-	private String replyLevel;
 	private String userId;
 	private String content;
 	private String createdDate;
 	
+	
+	
 	public BoardReply() { }
-	public BoardReply(long replyId, long boardId, String replyLevel, String userId, String content,
+	public BoardReply(long replyId, long boardId, String userId, String content,
 			String createdDate) {
 		this.replyId = replyId;
 		this.boardId = boardId;
-		this.replyLevel = replyLevel;
 		this.userId = userId;
 		this.content = content;
 		this.createdDate = createdDate;
@@ -31,12 +31,6 @@ public class BoardReply {
 	}
 	public void setBoardId(long boardId) {
 		this.boardId = boardId;
-	}
-	public String getReplyLevel() {
-		return replyLevel;
-	}
-	public void setReplyLevel(String replyLevel) {
-		this.replyLevel = replyLevel;
 	}
 	public String getUserId() {
 		return userId;

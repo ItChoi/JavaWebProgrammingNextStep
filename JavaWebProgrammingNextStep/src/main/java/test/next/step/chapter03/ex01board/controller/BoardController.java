@@ -12,11 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import test.next.step.chapter03.ex01board.domain.Board;
 import test.next.step.chapter03.ex01board.domain.Member;
+import test.next.step.chapter03.ex01board.domain.Page;
 import test.next.step.chapter03.ex01board.service.BoardService;
 import test.next.step.chapter03.ex01board.service.MemberService;
 
@@ -40,6 +42,9 @@ public class BoardController {
 		
 		List<Board> boardList = boardService.getBoardList();
 		
+		
+		/*Page page = new Page();
+		model.addAttribute("page", page);*/
 		model.addAttribute("boardList", boardList);
 		
 		return "/chapter03/board/posts";
@@ -48,7 +53,7 @@ public class BoardController {
 	@GetMapping("/register")
 	public String boardRegister(@ModelAttribute("member") Member member) {
 		System.out.println("get resgister");
-		return "/chapter03/board/form";
+		return "/chapter03/board/register";
 	}
 	
 	@PostMapping("/register")
@@ -112,12 +117,21 @@ public class BoardController {
 		return "redirect:login"; 
 	}
 	
-	
 	@GetMapping("/info")
 	public String boardInfo() {
 		
 		return "/chapter03/board/form";
 	}
+	
+	
+	@GetMapping("/detail")
+	public String detailGet(@PathVariable("boardId") Long boardId) {
+		
+		
+		
+		return "";
+	}
+	
 	
 	
 	

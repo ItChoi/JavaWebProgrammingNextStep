@@ -1,0 +1,10 @@
+package test.next.step.chapter03.ex01board.domain;
+
+public class BoardReply2 {
+	private long replyId;
+	private long boardId;
+	private String userId;
+	private String content;
+	private String createdDate;
+	
+}

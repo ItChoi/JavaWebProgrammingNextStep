@@ -26,11 +26,27 @@
 	</sql>
 
 	<select id="getBoardList" resultMap="BoardResult">
-		SELECT 
-			ROWNUM,
-			<include refid="AllBoardColumn" />
+		SELECT
+		  B.*
 		FROM
-			BOARD
+		  (
+		  SELECT 
+		    ROWNUM RNUM,
+		    <include refid="AllBoardColumn" />
+		  FROM
+		    (
+		    SELECT
+		      <include refid="AllBoardColumn" />
+		    FROM  
+		      BOARD
+		    ) A
+		  WHERE
+		    ROWNUM <![CDATA[<=]]> 10
+		  ) B
+		WHERE
+		  B.RNUM <![CDATA[ >= ]]> 1
 	</select>
+
+	
 
 </mapper>

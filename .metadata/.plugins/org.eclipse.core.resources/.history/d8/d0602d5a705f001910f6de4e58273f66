@@ -1,0 +1,23 @@
+package test.next.step.chapter03.ex01board.domain;
+
+import java.util.List;
+
+public class Board {
+	private int rnum;
+	
+	private Long boardId;
+	private String userId;
+	private String title;
+	private String content;
+	private String image;
+	private int hitCount;
+	private String createdDate;
+	
+	private List<BoardReply> boardReplyList;
+	private List<BoardReply2> boardReply2List;
+	
+	
+	public Board() { }
+	
+	
+}

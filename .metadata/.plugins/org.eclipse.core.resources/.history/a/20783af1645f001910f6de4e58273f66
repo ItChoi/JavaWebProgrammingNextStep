@@ -1,0 +1,14 @@
+package test.next.step.chapter03.ex01board.domain;
+
+public class Page {
+	private int startPage;	// 시작 페이지
+	private int lastPage;	// 끝 페이지
+	private int curPage;	// 현재 페이지
+	private boolean prev;	// 이전
+	private boolean next;	// 다음
+	
+	
+	
+	
+	
+}

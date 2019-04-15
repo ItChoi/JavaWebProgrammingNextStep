@@ -57,8 +57,8 @@ table
 				<c:when test="${not empty boardList}">
 					<c:forEach var="board" items="${boardList }">
 						<tr>
-							<td>${board.rownum }</td>
-							<td>${board.userId }</td>
+							<td>${board.rnum }</td>
+							<td><a href="detail?boardId=${board.boardId }">${board.userId }</a></td>
 							<td>${board.title }</td>
 							<td>${board.hitCount }</td>
 							<td>${board.createdDate }</td>
