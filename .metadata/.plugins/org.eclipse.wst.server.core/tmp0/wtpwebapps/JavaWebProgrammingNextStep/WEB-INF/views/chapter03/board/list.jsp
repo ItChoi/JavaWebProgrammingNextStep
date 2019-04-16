@@ -110,6 +110,7 @@
 	});
 	
 	function menuChange(type) {
+		alert("type: " + type);
 		$(".content").empty();
 		$.ajax({
 			type: 'get',

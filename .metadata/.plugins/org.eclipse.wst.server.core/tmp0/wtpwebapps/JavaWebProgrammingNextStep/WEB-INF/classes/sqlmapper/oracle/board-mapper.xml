@@ -47,6 +47,13 @@
 		  B.RNUM <![CDATA[ >= ]]> 1
 	</select>
 
-	
+	<select id="getBoardByBoardId" parameterType="Long" resultMap="BoardResult">
+		SELECT
+			<include refid="AllBoardColumn" />
+		FROM
+			BOARD
+		WHERE
+			BOARD_ID = #{boardId}
+	</select>
 
 </mapper>

@@ -1,0 +1,76 @@
+# 03장
+
+### 실습 - 게시판 만들기 (게시글-페이징, 댓글, 질문 / 회원가입 / 로그인 / 질문 목록 ) p.77 참고
+	- - ojdbc(x).jar파일을 Java Build Path와 Deployment Assembly에 추가 해줘야 한다.... (Eclipse 기준) 
+	- oracle 계정 생성
+		- sqlplus "/as sysdba"
+		- create user nextstep identified by nextstep;
+		- grant connect, resource to nextstep;
+			- connect, resource 권한을 주면 일반적인 것 사용 가능 (DDL, DML)
+	
+	- 테이블
+		1) Member
+			- MEMBER_ID NUMBER PRIMARY KEY
+			- USER_ID VARCHAR(50)
+			- PASSWORD VARCHAR(50)
+			- NAME VARCHAR(50)
+			- EMAIL VARCHAR(50)
+			
+			- ex)
+			CREATE TABLE MEMBER (
+			  MEMBER_ID NUMBER PRIMARY KEY,
+			  USER_ID VARCHAR(50),
+			  PASSWORD VARCHAR(50),
+			  EMAIL VARCHAR(50)
+			);
+		
+		
+		2) BOARD
+			- BOARD_ID NUMBER PRIMARY KEY
+			- USER_ID VARCHAR(50) FOREIGN KEY
+			- TITLE VARCHAR(100)
+			- CONTENT VARCHAR(1000)
+			- IMAGE VARCHAR(100)
+			- HIT_COUNT NUMBER // 게시글 조회수
+			- CREATED_DATE (VARCHAR 12)
+			
+			- ex)
+			CREATE TABLE BOARD (
+			  BOARD_ID NUMBER PRIMARY KEY,
+			  USER_ID VARCHAR(50),
+			  TITLE VARCHAR(100),
+			  CONTENT VARCHAR(1000),
+			  IMAGE VARCHAR(100),
+			  HIT_COUNT NUMBER DEFAULT 0,
+			  CREATED_DATE VARCHAR(12),
+			  CONSTRAINT FK_MEMBER_ID1 FOREIGN KEY(MEMBER_ID)
+			  REFERENCES MEMBER(MEMBER_ID)
+			);
+			
+			
+		3) BOARD_REPLY
+			- REPLY_ID NUMBER PRIMARY KEY
+			- BOARD_ID NUMBER FOREIGN KEY
+			
+			- ex)
+			CREATE TABLE BOARD_REPLY (
+			  REPLY_ID NUMBER PRIMARY KEY,
+			  BOARD_ID NUMBER,
+			);
+		
+		
+			COMMENT ON COLUMN BOARD_REPLY2.REPLY_LEVEL IS '(1: 댓글, 2: 대댓글, 3: 대대댓글)';
+			
+			
+		4) BOARD_REPLY2 (댓글에 대댓글)
+			- REPLY2_ID NUMBER PRIMARY KEY
+			- BOARD_ID NUMBER FOREIGN KEY
+			- REPLY_ID NUMBER  
+			- REPLY_LEVEL VARCHAR(1) // (1: 댓글, 2: 대댓글, 3: 대대댓글)
+			- USER_ID VARCHAR(50)
+			- CONTENT VARCHAR(1000)
+			- CREATED_DATE VARCHAR(12)
+			
+			- ex)
+			
+			

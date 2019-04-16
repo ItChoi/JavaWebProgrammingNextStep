@@ -6,4 +6,5 @@ import test.next.step.chapter03.ex01board.domain.Board;
 
 public interface BoardMapper {
 	List<Board> getBoardList();
+	Board getBoardByBoardId(long boardId);
 }

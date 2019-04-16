@@ -18,5 +18,10 @@ public class BoardServiceImpl implements BoardService {
 	public List<Board> getBoardList() {
 		return boardMapper.getBoardList();
 	}
+	
+	@Override
+	public Board getBoardByBoardId(long boardId) {
+		return boardMapper.getBoardByBoardId(boardId);
+	}
 
 }

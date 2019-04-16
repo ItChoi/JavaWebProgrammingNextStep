@@ -56,7 +56,6 @@ INDEX VERSION 1.130+C:\Study\JavaWebNextStep\.metadata\.plugins\org.eclipse.jdt.
 3909530058.index
 484792345.index
 194259052.index
-1513892917.index
 559129880.index
 2101086630.index
 2483654080.index
