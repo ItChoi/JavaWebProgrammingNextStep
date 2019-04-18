@@ -48,4 +48,7 @@
 <fullyQualifiedTypeName name="test.next.step.chapter03.ex01board.mapper.BoardMapper"/>
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="test.next.step.chapter03.ex01board.service.BoardService"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+<fullyQualifiedTypeName name="java.util.Properties"/>
+<fullyQualifiedTypeName name="java.io.File"/>
 </qualifiedTypeNameHistroy>

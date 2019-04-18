@@ -15,6 +15,13 @@
 	</properties>
 	<dependencies>
 	
+		<!-- MultipartFile Upload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+	
 		<!-- 객체를 JSON/XML로 변환할 떄 사용 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>

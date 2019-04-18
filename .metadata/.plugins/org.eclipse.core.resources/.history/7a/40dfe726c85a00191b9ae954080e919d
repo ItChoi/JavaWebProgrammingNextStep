@@ -1,5 +1,0 @@
-package test.next.step.chapter03.ex01board;
-
-public interface MemberMapper {
-
-}

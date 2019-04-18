@@ -1,0 +1,8 @@
+upload.root=C:/Study
+upload.base.folder=/upload
+
+dataSource.type=oracle
+dataSource.driverClassName="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"
+dataSource.url=jdbc:log4jdbc:oracle:thin:@localhost:1521:XE
+dataSource.username=nextstep
+dataSource.password=nextstep

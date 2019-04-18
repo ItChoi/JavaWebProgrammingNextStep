@@ -1,10 +1,13 @@
 package test.next.step.chapter03.ex01board.domain;
 
+import java.io.File;
+
 public class Member {
 	private long memberId;
 	private String userId;
 	private String password;
 	private String email;
+	private String image;
 	
 	public Member() { }
 	public Member(long memberId, String userId, String password, String email) {
@@ -37,5 +40,18 @@ public class Member {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+	public String getImageSrc() {
+		String imageSrc = "";
+		String uploadBaseFolder = "/upload";
+		
+		if (image != null && image != "") {
+			imageSrc = uploadBaseFolder + "/" + userId
+					 + "/profile/" + image; 
+		} else {
+			// imageSrc = uploadRoot + uploadBaseFolder + "/" + "기본이미지";
+		}
+		
+		return imageSrc;
+	}
 }

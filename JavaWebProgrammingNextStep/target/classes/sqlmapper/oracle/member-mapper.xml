@@ -10,11 +10,12 @@
 		<id property="userId" column="USER_ID" />
 		<id property="password" column="PASSWORD" />
 		<id property="email" column="EMAIL" />
+		<result property="image" column="IMAGE"/>
 	</resultMap>
 
 	<insert id="register">
-		INSERT INTO MEMBER (USER_ID, PASSWORD, EMAIL)
-		VALUES (#{userId}, #{password}, #{email})
+		INSERT INTO MEMBER (USER_ID, PASSWORD, EMAIL, IMAGE)
+		VALUES (#{userId}, #{password}, #{email}, #{image)
 	</insert>
 	
 	<select id="loginTest" parameterType="test.next.step.chapter03.ex01board.domain.Member" resultType="Integer">

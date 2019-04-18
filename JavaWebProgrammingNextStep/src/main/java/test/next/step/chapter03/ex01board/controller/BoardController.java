@@ -1,6 +1,7 @@
 package test.next.step.chapter03.ex01board.controller;
 
 import java.util.List;
+import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -132,10 +133,8 @@ public class BoardController {
 		
 		Board board = boardService.getBoardByBoardId(boardId);
 		
-		System.out.println("asdadasd: " + board.getTitle());
-		System.out.println("asdadasd: " + board.getUserId());
-		System.out.println("asdadasd: " + board.getCreatedDate());
-		System.out.println("asdadasd: " + board.getContent());
+		
+		
 		
 		model.addAttribute("board", board);
 		
