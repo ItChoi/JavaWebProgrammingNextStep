@@ -1,11 +1,12 @@
 package test.next.step.chapter03.ex01board.controller;
 
 import java.util.List;
-import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,20 +14,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import test.next.step.chapter03.ex01board.domain.Board;
+import test.next.step.chapter03.ex01board.domain.BoardReply;
 import test.next.step.chapter03.ex01board.domain.Member;
-import test.next.step.chapter03.ex01board.domain.Page;
 import test.next.step.chapter03.ex01board.service.BoardService;
 import test.next.step.chapter03.ex01board.service.MemberService;
 
 @RequestMapping("/chapter03/board")
 @Controller
 public class BoardController {
+	
+	private Logger logger = LoggerFactory.getLogger(BoardController.class);
 
 	@Autowired
 	MemberService memberService;
@@ -128,15 +130,15 @@ public class BoardController {
 	
 	@GetMapping("/detail")
 	public String detailGet(@RequestParam("boardId") Long boardId, Model model) {
-	
-		System.out.println("boardId: " + boardId);
+		logger.info("boardId: " + boardId);
 		
 		Board board = boardService.getBoardByBoardId(boardId);
 		
-		
-		
+		List<BoardReply> boardReply = boardService.getBoardReplyByBoardId(boardId);
 		
 		model.addAttribute("board", board);
+		model.addAttribute("boardReply", boardReply);
+		model.addAttribute("boardReplyCount", boardService.getBoardReplyCountByBoardId(boardId));
 		
 		return "/chapter03/board/form";
 	}

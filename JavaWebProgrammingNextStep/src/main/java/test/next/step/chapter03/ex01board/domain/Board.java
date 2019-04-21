@@ -1,7 +1,5 @@
 package test.next.step.chapter03.ex01board.domain;
 
-import java.io.File;
-
 public class Board {
 	private int rnum;
 	

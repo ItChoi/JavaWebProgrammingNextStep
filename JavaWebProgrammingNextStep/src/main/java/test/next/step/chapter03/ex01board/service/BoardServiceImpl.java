@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import test.next.step.chapter03.ex01board.domain.Board;
+import test.next.step.chapter03.ex01board.domain.BoardReply;
 import test.next.step.chapter03.ex01board.mapper.BoardMapper;
 
 @Service
@@ -23,5 +24,15 @@ public class BoardServiceImpl implements BoardService {
 	public Board getBoardByBoardId(long boardId) {
 		return boardMapper.getBoardByBoardId(boardId);
 	}
+	
+	@Override
+	public List<BoardReply> getBoardReplyByBoardId(long boardId) {
+		return boardMapper.getBoardReplyByBoardId(boardId);
+	}
 
+	@Override
+	public int getBoardReplyCountByBoardId(long boardId) {
+		return boardMapper.getBoardReplyCountByBoardId(boardId);
+	}
+	
 }

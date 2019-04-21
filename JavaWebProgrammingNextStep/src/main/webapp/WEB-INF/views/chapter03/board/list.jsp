@@ -44,7 +44,7 @@
 
 	.content_wrap {
 		margin: 5px 5px 2px 5px;
-		border: 1px solid black;
+		border-top: 1px solid black;
 		height: 575px;
 		overflow: hidden;
 	}
@@ -55,6 +55,7 @@
 		float: left;
 		height: 563px;
 		border: 1px solid black; 
+		overflow: hidden;
 	}
 	
 	.banner { 

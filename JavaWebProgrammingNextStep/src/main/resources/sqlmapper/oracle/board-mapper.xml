@@ -15,6 +15,16 @@
 		<result property="createdDate" column="CREATED_DATE"/>
 	</resultMap>
 	
+	<resultMap id="BoardReplyResult" type="test.next.step.chapter03.ex01board.domain.BoardReply">
+		<id property="replyId" column="REPLY_ID"/>
+		<result property="boardId" column="BOARD_ID"/>
+		<result property="parentReplyId" column="PARENT_REPLY_ID"/>
+		<result property="replyLevel" column="REPLY_LEVEL"/>
+		<result property="userId" column="USER_ID"/>
+		<result property="content" column="CONTENT"/>
+		<result property="createdDate" column="CREATED_DATE"/>
+	</resultMap>
+	
 	<sql id="AllBoardColumn">
 		BOARD_ID,
 		USER_ID,
@@ -24,6 +34,17 @@
 		HIT_COUNT,
 		CREATED_DATE
 	</sql>
+	
+	<sql id="AllBoardReplyColumn">
+		REPLY_ID,
+		BOARD_ID,
+		PARENT_REPLY_ID,
+		REPLY_LEVEL,
+		USER_ID,
+		CONTENT,
+		CREATED_DATE
+	</sql>
+	
 
 	<select id="getBoardList" resultMap="BoardResult">
 		SELECT
@@ -54,6 +75,38 @@
 			BOARD
 		WHERE
 			BOARD_ID = #{boardId}
+	</select>
+
+	<select id="getBoardReplyByBoardId" parameterType="Long" resultMap="BoardReplyResult">
+		SELECT
+		  BR.*
+		FROM
+		  (
+		    SELECT REPLY_ID, BOARD_ID, PARENT_REPLY_ID, REPLY_LEVEL, USER_ID, CONTENT, CREATED_DATE
+		    FROM
+		      BOARD_REPLY
+		    WHERE
+		      BOARD_ID = #{boardId}
+		  ) BR  
+		ORDER BY
+		  (CASE WHEN PARENT_REPLY_ID IS NULL
+		    THEN REPLY_ID
+		  ELSE
+		    PARENT_REPLY_ID
+		  END),
+		  REPLY_LEVEL,
+		  CREATED_DATE
+		ASC
+	</select>
+
+	<select id="getBoardReplyCountByBoardId" parameterType="Long" resultType="Integer">
+		SELECT
+		  COUNT(*)
+		FROM
+		  BOARD_REPLY
+		WHERE
+		  PARENT_REPLY_ID IS NULL
+		  AND BOARD_ID = #{boardId}
 	</select>
 
 </mapper>
