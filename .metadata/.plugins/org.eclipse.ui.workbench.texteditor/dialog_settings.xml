@@ -6,20 +6,20 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="user_content" key="selection"/>
+		<item value="DEFAULT_PORT" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="DEFAULT_PORT"/>
+			<item value="푸터"/>
+			<item value="reply_content"/>
+			<item value="tete"/>
+			<item value="reply_info"/>
 			<item value="user_content"/>
-			<item value="replyer_info"/>
-			<item value="getBoardReplyCountByBoardId"/>
-			<item value="board_content"/>
-			<item value="3px"/>
-			<item value="3ㅔㅌ"/>
-			<item value="의견"/>
-			<item value="3"/>
+			<item value="user_info"/>
+			<item value="board_reply_frame"/>
 		</list>
 		<list key="replacehistory">
 		</list>

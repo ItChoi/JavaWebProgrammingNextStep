@@ -3,7 +3,5 @@ INDEX VERSION 1.3+C:\Study\JavaWebNextStep\.metadata\.plugins\org.eclipse.wst.js
 2451186950.index
 3758248717.index
 301270246.index
-796656478.index
 3334466256.index
 1513892917.index
-796656478.index

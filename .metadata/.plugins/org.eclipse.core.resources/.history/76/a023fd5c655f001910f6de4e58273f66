@@ -1,7 +1,0 @@
-package test.next.step.chapter03.ex01board.domain;
-
-public class Criteria {
-	private int totalPage;		// 총 페이지 수
-	private int totalItemCnt;	// 총 게시글 수
-
-}

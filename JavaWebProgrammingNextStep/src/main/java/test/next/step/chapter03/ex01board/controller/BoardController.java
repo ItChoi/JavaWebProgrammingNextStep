@@ -37,7 +37,10 @@ public class BoardController {
 	BoardService boardService;
 	
 	@GetMapping("/list")
-	public void boardList() {
+	public void boardList(Model model) {
+		
+		
+		
 		System.out.println("°Ù¸®½ºÆ®");
 	}
 	

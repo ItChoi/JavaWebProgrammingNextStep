@@ -1,4 +1,4 @@
-GitRepositoriesView.GitDirectories=C\:\\Study\\JavaWebNextStep\\.git;
-GitRepositoriesView.GitDirectories.relative=.git;
+GitRepositoriesView.GitDirectories=C\:\\Study\\JavaWebNextStep\\.git;C\:\\Study\\JavaWebNextStep\\web-application-server\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;web-application-server\\.git;
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1
