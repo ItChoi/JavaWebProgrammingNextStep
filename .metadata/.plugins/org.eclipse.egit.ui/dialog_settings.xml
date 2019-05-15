@@ -8,4 +8,7 @@
 	<list key="RepositorySelectionPage.UsedUris">
 		<item value="https://github.com/ItChoi/web-application-server.git"/>
 	</list>
+	<section name="GitCommitSearchPage">
+		<item value="0" key="HISTORY_SIZE"/>
+	</section>
 </section>
