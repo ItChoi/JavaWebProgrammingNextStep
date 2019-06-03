@@ -1,0 +1,217 @@
+package webserver;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import db.DataBase;
+import model.User;
+import util.HttpRequestUtils;
+import util.IOUtils;
+
+public class RequestHandler extends Thread {
+    private static final Logger log = LoggerFactory.getLogger(RequestHandler.class);
+
+    private Socket connection;
+
+    public RequestHandler(Socket connectionSocket) {
+        this.connection = connectionSocket;
+    }
+
+    public void run() {
+        log.debug("New Client Connect! Connected IP : {}, Port : {}", connection.getInetAddress(),
+                connection.getPort());
+
+        try (InputStream in = connection.getInputStream(); OutputStream out = connection.getOutputStream()) {
+            // TODO 사용자 요청에 대한 처리는 이 곳에 구현하면 된다.
+        	DataOutputStream dos = new DataOutputStream(out);
+        	BufferedReader br = new BufferedReader(new InputStreamReader(in));
+        	byte[] body = null;
+        	String line;
+        	
+        	String cookieCheck = "";
+        	
+        	int i = 0;
+        	String uris = "";
+        	String contentLength = "";
+        	String length = "";
+        	
+        	String cookieLogined = "";
+        	String cookieLoginedValue = "";
+    		while (!"".equals(line = br.readLine())) {
+    			if (i == 0) {
+    				uris += line + " ";
+    			}
+    			
+    			if (line == null) {
+    				return;
+    			}
+    			
+    			if (line.indexOf("Cookie") != -1) {
+    				if (line.indexOf(";") != -1) {
+    					cookieLogined = line.substring(line.indexOf("logined="), line.indexOf(";"));
+    					
+    					if (cookieLogined != "" && cookieLogined != null) {
+    						String[] loginCheck = cookieLogined.split("=");  
+    						cookieLoginedValue = loginCheck[1];
+    					}
+    				}
+    				
+    			}
+    			
+				if (line.indexOf("Content-Length") != -1) {
+					length = line.substring(line.indexOf(" ") + 1);
+				}
+    			
+    			i++;
+    		}
+    		
+    		User user = null;
+    		String[] test = uris.split(" ");
+    		if ("POST".equals(test[0]) && test[1].indexOf("login") != -1) {
+    			
+    			String queryString = IOUtils.readData(br, Integer.parseInt(length));
+    			Map<String, String> userInfo = HttpRequestUtils.parseQueryString(queryString);
+    			
+    			user = DataBase.findUserById(userInfo.get("userId"));
+    			if (user != null && user.getUserId() != null && user.getUserId() != "") {
+    				// TODO::: 쿠키 셋팅
+    				test[1] = "/index.html";
+    				cookieCheck = "true";
+    			} else {
+    				test[1] = "/user/login_failed.html";
+    				cookieCheck = "false";
+    			}
+    			
+    		}
+    		
+    		// TODO::: jsp에 sb 파싱하기.
+    		StringBuilder sb = new StringBuilder();
+    		System.out.println("cookieLoginedValue: " + cookieLoginedValue);
+    		System.out.println("cookieCheck: " + cookieCheck);
+    		if (cookieCheck != "" && cookieCheck != null && cookieCheck != "false") {
+    			sb.append("<tr>")
+    			  .append("<th scope=\"row\">3</th>")
+    			  .append("<td>" + user.getUserId() + "</td>")
+    			  .append("<td>" + user.getName() + "</td>")
+    			  .append("<td>" + user.getEmail() + "</td>")
+    			  .append("<td><a href=\"#\" class=\"btn btn-success\" role=\"button\">수정</a></td>");
+    		}
+    		
+    		int queryStringIndex = test[1].indexOf("?"); 
+    		
+    		if (queryStringIndex != -1) {
+    			String url = test[1].substring(0, queryStringIndex);
+    			String param = test[1].substring(queryStringIndex + 1);
+    			System.out.println("url: " + url);
+    			System.out.println("param: " + param);
+    		
+    			if (url.indexOf("create") != -1) {
+    				Map<String, String> userInfo = HttpRequestUtils.parseQueryString(param);
+    				User user1 = new User(userInfo.get("userId"),
+    						userInfo.get("password"),
+    						userInfo.get("name"), 
+    						userInfo.get("email"));
+    				
+    				DataBase.addUser(user1);
+    			}
+    		}
+    		
+            if (queryStringIndex != -1) {
+            	response302Header(dos, "/index.html");
+            } else {
+            	/**
+            	 * 로그인 성공 시 list에 사용자 정보 보여주기.
+            	 * - 1. 파일 자체를 읽어서 뿌려주고 있다. 따라서 body를 만들기 전 file에 write를 해줘야 되나?
+            	 * - 2. 파일을 읽어서 뿌려주고, 그 상태에서 삽입 구간을 찾아 삽입한다?
+            	 * - 1번이 맞겠지? 
+            	 */
+            	
+            	System.out.println("test[1]: " + test[1]);
+            	File file = new File("./webapp" + test[1]);
+            	System.out.println("file path: " + file.toPath());
+            	if (sb.toString() != "" && sb.toString() != null) {
+            		// dos.writeBytes(sb.toString());
+            		
+            	}
+            	
+            	body = Files.readAllBytes(new File("./webapp" + test[1]).toPath());
+            	if ("true".equals(cookieCheck)) {
+            		response200HeaderCookie(dos, body.length, true);
+            		
+            	} else if ("false".equals(cookieCheck)) {
+            		response200HeaderCookie(dos, body.length, false);
+            	} else {
+            		response200Header(dos, body.length);
+            	}
+            }
+            responseBody(dos, body);
+        } catch (IOException e) {
+            log.error(e.getMessage());
+        } catch (InvalidPathException e) {
+        	log.error("해당 경로에 적당한 파일이 없네유..... " + e.getMessage());
+		}
+    }
+
+    private void response200Header(DataOutputStream dos, int lengthOfBodyContent) {
+        try {
+            dos.writeBytes("HTTP/1.1 200 OK \r\n");
+            dos.writeBytes("Content-Type: text/html;charset=utf-8\r\n");
+            dos.writeBytes("Content-Length: " + lengthOfBodyContent + "\r\n");
+            dos.writeBytes("\r\n");
+        } catch (IOException e) {
+            log.error(e.getMessage());
+        }
+    }
+    
+    private void response200HeaderCookie(DataOutputStream dos, int lengthOfBodyContent, boolean cookie) {
+        try {
+            dos.writeBytes("HTTP/1.1 200 OK \r\n");
+            dos.writeBytes("Content-Type: text/html;charset=utf-8\r\n");
+            dos.writeBytes("Content-Length: " + lengthOfBodyContent + "\r\n");
+            dos.writeBytes("Set-Cookie: logined=" + cookie+ "\r\n");
+            dos.writeBytes("\r\n");
+        } catch (IOException e) {
+        	log.error("IOEXception0: " + e.getMessage());
+        }
+    }
+    
+    
+    
+    private void response302Header(DataOutputStream dos, String location) {
+        try {
+        	dos.writeBytes("HTTP/1.1 302 Found \r\n");
+        	dos.writeBytes("Location: " + location + "\r\n");
+        } catch (IOException e) {
+        	log.error("IOEXception1: " + e.getMessage());
+        }
+    }
+
+    private void responseBody(DataOutputStream dos, byte[] body) {
+        try {
+            dos.write(body, 0, body.length);
+            if (dos.equals("tbody")) {
+            	
+            }
+            dos.flush();
+            
+        } catch (IOException e) {
+            log.error("IOEXception2: " + e.getMessage());
+        } catch (NullPointerException e) {
+        	log.error("Null 포인트 익셉션..... " + e.getMessage());
+        }
+    }
+}
