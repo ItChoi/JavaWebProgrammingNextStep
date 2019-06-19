@@ -6,20 +6,20 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="" key="selection"/>
+		<item value="test[1]:" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="tomcat"/>
-			<item value="maven-pl"/>
-			<item value="eclipse-pl"/>
-			<item value="extensionCheck"/>
-			<item value="todo"/>
-			<item value="if (extensionCheck.indexOf(&quot;css&quot;) != -1) {"/>
-			<item value="extensionCheck:"/>
-			<item value="uris:"/>
+			<item value="test[1]:"/>
+			<item value="1"/>
+			<item value="queryString: "/>
+			<item value="urlTest[0]:"/>
+			<item value="realPath:"/>
+			<item value="userid="/>
+			<item value="userid"/>
+			<item value="queryString"/>
 		</list>
 		<list key="replacehistory">
 		</list>
