@@ -1,0 +1,7 @@
+### 3장 요구사항
+
+##### 1. 요구사항 1 - index.html 응답하기
+    1단계 Hint
+        - InputStream을 한 줄 단위로 읽기 위해 BufferedReader를 생성. 
+        - BufferedReader.readLine() 메소드를 활용해 라인별로 HTTP 요청 정보를 읽는다.
+        - 

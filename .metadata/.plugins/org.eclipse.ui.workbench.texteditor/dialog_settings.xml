@@ -6,26 +6,26 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="" key="selection"/>
+		<item value="cookie2:" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="cookie2:"/>
+			<item value="getHeader.get(Cookie)"/>
+			<item value="getHeader"/>
 			<item value="cookie1:"/>
-			<item value="body"/>
-			<item value="queryString:"/>
-			<item value="cookieCheck"/>
-			<item value="url: "/>
-			<item value="test"/>
-			<item value="test[1]: "/>
-			<item value="11 11"/>
+			<item value="cookieLogined"/>
+			<item value="header key : Cookie"/>
+			<item value="header key :"/>
+			<item value="cookie1: "/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="340" key="DIALOG_WIDTH"/>
+		<item value="339" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="454" key="DIALOG_HEIGHT"/>
 		<item value="34" key="DIALOG_X_ORIGIN"/>
