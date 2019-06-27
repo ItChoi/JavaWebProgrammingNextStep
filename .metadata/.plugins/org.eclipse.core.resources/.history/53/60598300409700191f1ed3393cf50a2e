@@ -1,0 +1,64 @@
+package util;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import webserver.RequestHandler;
+
+public class HttpRequestProcessingUtils {
+	
+	private static final Logger log = LoggerFactory.getLogger(RequestHandler.class);
+	
+	private BufferedReader br;
+	
+	private String[] tokens;
+	
+	
+	public HttpRequestProcessingUtils(InputStream inputStream) {
+		br = new BufferedReader(new InputStreamReader(inputStream));
+	}
+	
+
+	public Map<String, String> returnHttpRequestInfo(String httpLine) {
+		
+		Map<String, String> header = new HashMap<>();
+		
+		String line = "";
+		
+		tokens = br.readLine().split(" ");
+		
+		// http method
+		header.put("HttpMethod", tokens[0]);
+		// http url
+		header.put("HttpUrl", tokens[1]);
+		// http version
+		header.put("HttpVersion", tokens[2]);
+		
+		try {
+			while (!"".equals(line = br.readLine())) {
+				if (line == null) {
+					break;
+				}
+				
+				// header 정보 
+				tokens = line.split(": ");
+				header.put(tokens[0], tokens[1]);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return header; 
+	}
+	
+	
+	
+}

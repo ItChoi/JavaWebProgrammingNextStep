@@ -1,0 +1,100 @@
+package util;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class HttpRequestProcessingUtils {
+	
+	private static final Logger log = LoggerFactory.getLogger(HttpRequestProcessingUtils.class);
+	
+	private BufferedReader br;
+	
+	private String[] tokens;
+	
+	private Map<String, String> params = new HashMap<>();
+	
+	
+	public String[] getTokens() {
+		return tokens;
+	}
+	
+	public Map<String, String> getParams() {
+		return params;
+	}
+	
+	
+	public HttpRequestProcessingUtils(InputStream inputStream) {
+		br = new BufferedReader(new InputStreamReader(inputStream));
+	}
+	
+	
+	public String[] getHeaderInfo() {
+	
+		return new String[5];
+	}
+	
+	
+	public Map<String, String> getDetailHeaderInfo() {
+		Map<String, String> header = new HashMap<>();
+		
+		return header
+	}
+	
+	
+
+	public Map<String, String> returnHttpRequestInfo() {
+		
+		Map<String, String> header = new HashMap<>();
+		
+		try {		
+			String line = "";
+			
+			tokens = br.readLine().split(" ");
+			
+			if (tokens[1].indexOf("?") != -1) {
+				String uri = tokens[1]; 
+				String[] queryString = uri.substring(0, uri.indexOf("?")).split("&");
+				tokens[1] = uri.substring(0, uri.indexOf("?"));
+				
+				for (int i = 0; i < queryString.length; i++) {
+					params.put(queryString[0], queryString[1]);
+				}
+				
+			}
+			
+			// http method
+			header.put("HttpMethod", tokens[0]);
+			// http url
+			header.put("HttpUrl", tokens[1]);
+			// http version
+			header.put("HttpVersion", tokens[2]);
+			
+			while (!"".equals(line = br.readLine())) {
+				if (line == null) {
+					break;
+				}
+				
+				// header 정보 
+				tokens = line.split(": ");
+				
+				header.put(tokens[0], tokens[1]);
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return header; 
+	}
+	
+	
+	
+}

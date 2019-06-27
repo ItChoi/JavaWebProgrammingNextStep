@@ -6,20 +6,20 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="cookie2:" key="selection"/>
+		<item value="tokens" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="tokens"/>
+			<item value="keyValue[0]: Host"/>
+			<item value="tokens[1]:"/>
+			<item value="new file"/>
+			<item value="cookie3-1:"/>
+			<item value="test"/>
 			<item value="cookie2:"/>
 			<item value="getHeader.get(Cookie)"/>
-			<item value="getHeader"/>
-			<item value="cookie1:"/>
-			<item value="cookieLogined"/>
-			<item value="header key : Cookie"/>
-			<item value="header key :"/>
-			<item value="cookie1: "/>
 		</list>
 		<list key="replacehistory">
 		</list>
