@@ -6,20 +6,20 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="userId Test:" key="selection"/>
+		<item value="savedUserId:" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="userId Test:"/>
-			<item value="len"/>
-			<item value="lenftg"/>
-			<item value="lenfth"/>
-			<item value="????"/>
-			<item value="httpMethod:"/>
-			<item value="test!!!!!!!!!!: "/>
-			<item value="&lt;form"/>
+			<item value="savedUserId:"/>
+			<item value="enffl"/>
+			<item value="post로는 온다.:"/>
+			<item value="uri2:::"/>
+			<item value="로그인해서 넘어온 아디: "/>
+			<item value="post로는"/>
+			<item value="uri"/>
+			<item value="uri2"/>
 		</list>
 		<list key="replacehistory">
 		</list>
@@ -27,8 +27,8 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="339" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
-		<item value="454" key="DIALOG_HEIGHT"/>
-		<item value="34" key="DIALOG_X_ORIGIN"/>
-		<item value="197" key="DIALOG_Y_ORIGIN"/>
+		<item value="343" key="DIALOG_HEIGHT"/>
+		<item value="193" key="DIALOG_X_ORIGIN"/>
+		<item value="239" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
